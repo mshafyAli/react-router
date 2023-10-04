@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState,useContext } from 'react'
 import "./signup.css"
 import axios from 'axios';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
+import { GlobalContext } from '../../context/context';
 
 const baseUrl = "http://localhost:3000";
 
 
-
 const Signup = () => {
+
+  let { state, dispatch } = useContext(GlobalContext);
 
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
@@ -72,6 +74,7 @@ const Signup = () => {
     <>
 
       <h1 className='text-4xl font-bold text-center'>Sign Up</h1>
+      <h2>{state.name}</h2>
 
       <form onSubmit={SignUpSubmit}>
 

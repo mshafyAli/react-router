@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react'
-import { useRef, useState } from 'react';
+import { useRef, useState,useEffect,useContext } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import axios from 'axios';
 import './login.css'
+import { GlobalContext } from '../../context/context';
 
 
 const baseUrl = "http://localhost:3000";
 
 
 const Login = () => {
+
+  let { state, dispatch } = useContext(GlobalContext);
+
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -53,13 +56,19 @@ const Login = () => {
 
   }
 
-
+const ChangeName = () => {
+  dispatch({
+    type: "CHANGE_NAME",
+    payload: "Shafy"
+  })
+}
 
   return (
     <>
 
       <h1 className='text-4xl font-bold text-center'>Sign Up</h1>
-
+      <h2>{state.name}</h2>
+      <button onClick={ChangeName}>Change Name</button>
       <form onSubmit={LoginSubmit}>
 
 

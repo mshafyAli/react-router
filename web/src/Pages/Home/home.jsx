@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import './home.css';
@@ -6,7 +7,6 @@ import './home.css';
 const baseUrl = "http://localhost:3000";
 
 const Home = () => {
-
 
     const postTitleInputRef = useRef(null);
     const postBodyIputRef = useRef(null);
@@ -147,10 +147,7 @@ const Home = () => {
             </div>
             <hr />
             
-            <br />
-
-
-            
+            <br />           
 
             <div>
                 {allPosts.map((post,index) => (
@@ -160,9 +157,9 @@ const Home = () => {
                         <input type="text" disabled value={post._id} hidden />
                         <input value={post.title} type="text" placeholder='Title' />
                         <br />
-                        <textarea   value={post.text} type="text" placeholder='Body'></textarea>
-                        <button type='sumit'>Save</button>
-                        <button type='buttoc' onClick={()=>{
+                        <textarea value={post.text} type="text" placeholder='Body'></textarea>
+                        <button type='submit'>Save</button>
+                        <button type='button' onClick={()=>{
                             post.isEdit = false;
                             setAllPosts([...allPosts])
                         }}
